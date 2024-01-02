@@ -1,0 +1,29 @@
+.container {
+  height: 100%;
+  .content {
+    height: calc(100% - 32px);
+    overflow-y: scroll;
+  }
+  .form {
+    display: flex;
+    :global {
+      .ant-form-item {
+        margin-bottom: 0;
+      }
+      .ant-form-item:nth-child(1) {
+        flex: 0 0 calc(100% - 60px);
+        input {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+      .ant-form-item:nth-child(2) {
+        button {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-left: none;
+        }
+      }
+    }
+  }
+}

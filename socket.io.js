@@ -20,22 +20,36 @@ const connections = {}
 
 // 监听 'connection' 事件
 io.on("connection", (socket) => {
-  console.log("a user connected")
 
   socket.on("user_connected", (userid) => {
     connections[userid] = socket
+    console.log(userid + "连接成功")
+    // socket.emit("online", connections)
   })
 
-  socket.on("chat message", (msg) => {
-    console.log("chat message: " + msg)
-    io.emit("message", msg)
-    socket.emit("message", "Hello, Tom")
+  socket.on("message", (msg) => {
+    // io.emit("message", msg)
+    // socket.emit("message", "Hello, Tom")
+    const { to } = JSON.parse(msg || "{}")
+    console.log("message", msg)
+    connections[to].emit("message", JSON.parse(msg))
   })
 
-  socket.on("disconnect", () => {
-    console.log("user disconnected")
+  // io.on("disconnect", () => {
+  //   io.emit("online", connections)
+  // })
+
+  socket.on("user_disconnect", (userid) => {
+    console.log(userid + "断开连接")
+    delete connections[userid]
+    // socket.emit("online", connections)
   })
 })
+
+setInterval(() => {
+  const onlineUserIds = Object.keys(connections);
+  io.emit('online', onlineUserIds);
+}, 2000)
 
 // 启动 HTTP 服务器
 httpServer.listen(5200, () => {

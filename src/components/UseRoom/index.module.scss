@@ -1,0 +1,35 @@
+.container {
+  width: 800px;
+  height: 600px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding: 16px;
+  .tabs {
+    height: 100%;
+    :global {
+      .ant-tabs-nav-list {
+        border-right: 1px solid #e5e6e6;
+        .ant-tabs-ink-bar {
+          display: none;
+        }
+      }
+      .ant-tabs-content {
+        height: 100%;
+        .ant-tabs-tabpane {
+          height: 100%;
+        }
+      }
+      .ant-tabs-tab-active {
+        background-color: aliceblue;
+      }
+      .ant-tabs-tab {
+        width: 150px;
+        height: 40px;
+      }
+      .ant-tabs-content-holder {
+        border: none;
+      }
+    }
+  }
+}
