@@ -1,0 +1,15 @@
+.container {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 80px;
+  .canvas {
+    border: 1px solid red;
+    cursor: url(../../assets/draw.svg), auto;
+  }
+  .draw {
+    cursor: url(../../assets/draw.svg), auto;
+  }
+  .eraser{
+    cursor: url(../../assets/eraser.svg), auto;
+  }
+}
